@@ -1,0 +1,20 @@
+﻿.suitescript_module {
+    font-size: 20px;    
+}
+
+.suitescript_function {
+    font-size: 16px;
+    margin-left: 25px;
+}
+
+.suitescript_property {
+    font-size: 16px;
+    margin-left: 25px;
+}
+.suitescript_object {
+    font-size: 16px;
+    margin-left: 25px;
+}
+
+body {
+}
