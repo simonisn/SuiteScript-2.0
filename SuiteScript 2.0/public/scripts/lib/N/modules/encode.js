@@ -10,8 +10,9 @@
 
 'use strict';
 
+N.encode = {};
 
-N.modules.Encode = function () {
+N.encode.module = function () {
     /**
     * @param {Object} options
     * @param {string} options.string String to encode
@@ -38,5 +39,5 @@ N.modules.Encode = function () {
 };
    
 define([], function () {
-    return new N.modules.Encode();
+    return new N.encode.module();
 });

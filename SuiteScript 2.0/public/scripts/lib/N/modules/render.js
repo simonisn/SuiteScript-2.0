@@ -11,8 +11,145 @@
 
 'use strict';
 
-N.modules.Render = function () {
+N.render = {};
 
+N.render.module = function () {   
+
+    /**
+    *
+    * @governance 10 units
+    * @restriction Supported by all server side scirpts
+    *
+    * @param {Object} options
+    * @param {number} options.entityId The internal ID of the transaction being printed
+    * @param {string} options.printMode (optional) The output type: PDF|HTML|DEFAULT. DEFAULT uses the user/company preference for print output
+    * @param {number} options.formId (optional)
+    *
+    * @returns {N.objects.File}
+    */
+    this.transaction = function (options) { };
+
+    /**
+    * @governance 10 units
+    * @restriction Supported by all server side scirpts
+    *
+    * @param {Object} options
+    * @param {number} options.entityId
+    * @param {string} options.printMode (optional)
+    * @param {number} options.formId  (optional)
+    * @param {date} options.startDate (optional)
+    * @param {date} options.statementDate (optional)
+    * @param {boolean} options.openTransactionsOnly  (optional)
+    *
+    * @returns {N.objects.File}
+    */
+    this.statement = function (options) { };
+
+    /**
+    * @governance 10 units
+    * @restriction Supported by all server side scirpts
+    *
+    * @param {Object} options
+    * @param {number} options.entityId
+    * @param {string} options.printMode (optional)
+    * @param {number} options.formId  (optional)
+    * @param {number} options.fulfillmentId (optional)
+    *
+    * @returns {N.objects.File}
+    */
+    this.packingSlip = function (options) { };
+
+    /**
+    * @governance 10 units
+    * @restriction Supported by all server side scirpts
+    *
+    * @param {Object} options
+    * @param {number} options.entityId
+    * @param {string} options.printMode (optional)
+    * @param {number} options.formId  (optional)
+    * @param {number} options.shipgroup (optional)
+    * @param {number} options.location (optional)
+    *
+    * @returns {N.objects.File}
+    */
+    this.pickingTicket = function (options) { };
+
+    /**
+    * @governance 10 units
+    * @restriction Supported by all server side scirpts
+    *
+    * @param {Object} options
+    * @param {number} options.entityId
+    * @param {string} options.printMode (optional)
+    *
+    * @returns {N.objects.File}
+    */
+    this.bom = function (options) { };
+
+    /**
+    * @governance 0 units
+    * @restriction Supported by all server side scirpts
+    
+    * @returns {N.render.objects.TemplateRenderer}
+    */
+    this.create = function (options) {
+        return new N.render.objects.TemplateRenderer();
+    };
+
+    /**
+    * @governance 10 units
+    * @restriction Supported by all server side scirpts
+    *
+    * @param {Object} options
+    * @param {Document|string} options.xmlString
+    * @returns {N.file.objects.File}
+    */
+    this.xmlToPdf = function (options) {
+        return new N.file.objects.File();
+    };
+
+    /**
+    *
+    * RecordRef Encapsulates the type and id of a particular record instance.
+    * @typedef {Object} RecordRef
+    * @property {number} id - Internal ID of the record instance.
+    * @property {string} type - Record type id.
+    *
+    * @governance 0 units
+    * @param {Object} options
+    * @param {number} options.templateId
+    * @param {RecordRef} options.entity
+    * @param {RecordRef} options.recipient
+    * @param {RecordRef} options.customRecord
+    * @param {number} options.supportCaseId
+    * @param {number} options.transactionId
+    *
+    * @returns {N.render.objects.EmailMergeResult}
+    *
+    */
+    this.mergeEmail = function (options) {
+        return new N.render.objects.EmailMergeResult();
+    };
+
+    /**
+    * Enum print mode type values.
+    * @readonly
+    * @enum {string}
+    */
+    function RenderPrintMode() {
+        this.PDF = 'PDF';
+        this.HTML = 'HTML';
+        this.DEFAULT = 'DEFAULT';
+    }
+
+    /** 
+    * Print Mode
+    * @returns {string}
+    **/
+    this.PrintMode = new RenderPrintMode();
+};
+
+N.render.objects = (function () {
     /**
     * @protected
     * @constructor
@@ -119,139 +256,12 @@ N.modules.Render = function () {
         this.toString = function (options) { };
     }
 
-
-    /**
-    *
-    * @governance 10 units
-    * @restriction Supported by all server side scirpts
-    *
-    * @param {Object} options
-    * @param {number} options.entityId The internal ID of the transaction being printed
-    * @param {string} options.printMode (optional) The output type: PDF|HTML|DEFAULT. DEFAULT uses the user/company preference for print output
-    * @param {number} options.formId (optional)
-    *
-    * @returns {N.objects.File}
-    */
-    this.transaction = function (options) { };
-
-    /**
-    * @governance 10 units
-    * @restriction Supported by all server side scirpts
-    *
-    * @param {Object} options
-    * @param {number} options.entityId
-    * @param {string} options.printMode (optional)
-    * @param {number} options.formId  (optional)
-    * @param {date} options.startDate (optional)
-    * @param {date} options.statementDate (optional)
-    * @param {boolean} options.openTransactionsOnly  (optional)
-    *
-    * @returns {N.objects.File}
-    */
-    this.statement = function (options) { };
-
-    /**
-    * @governance 10 units
-    * @restriction Supported by all server side scirpts
-    *
-    * @param {Object} options
-    * @param {number} options.entityId
-    * @param {string} options.printMode (optional)
-    * @param {number} options.formId  (optional)
-    * @param {number} options.fulfillmentId (optional)
-    *
-    * @returns {N.objects.File}
-    */
-    this.packingSlip = function (options) { };
-
-    /**
-    * @governance 10 units
-    * @restriction Supported by all server side scirpts
-    *
-    * @param {Object} options
-    * @param {number} options.entityId
-    * @param {string} options.printMode (optional)
-    * @param {number} options.formId  (optional)
-    * @param {number} options.shipgroup (optional)
-    * @param {number} options.location (optional)
-    *
-    * @returns {N.objects.File}
-    */
-    this.pickingTicket = function (options) { };
-
-    /**
-    * @governance 10 units
-    * @restriction Supported by all server side scirpts
-    *
-    * @param {Object} options
-    * @param {number} options.entityId
-    * @param {string} options.printMode (optional)
-    *
-    * @returns {N.objects.File}
-    */
-    this.bom = function (options) { };
-
-    /**
-    * @governance 0 units
-    * @restriction Supported by all server side scirpts
-    
-    * @returns {TemplateRenderer}
-    */
-    this.create = function (options) {
-        return new TemplateRenderer();
+    return {
+        EmailMergeResult: EmailMergeResult,
+        TemplateRenderer: TemplateRenderer
     };
-
-    /**
-    * @governance 10 units
-    * @restriction Supported by all server side scirpts
-    *
-    * @param {Object} options
-    * @param {Document|string} options.xmlString
-    * @returns {N.objects.File}
-    */
-    this.xmlToPdf = function (options) { };
-
-    /**
-    *
-    * RecordRef Encapsulates the type and id of a particular record instance.
-    * @typedef {Object} RecordRef
-    * @property {number} id - Internal ID of the record instance.
-    * @property {string} type - Record type id.
-    *
-    * @governance 0 units
-    * @param {Object} options
-    * @param {number} options.templateId
-    * @param {RecordRef} options.entity
-    * @param {RecordRef} options.recipient
-    * @param {RecordRef} options.customRecord
-    * @param {number} options.supportCaseId
-    * @param {number} options.transactionId
-    *
-    * @returns {EmailMergeResult}
-    *
-    */
-    this.mergeEmail = function (options) {
-        return new EmailMergeResult();
-    };
-
-    /**
-    * Enum print mode type values.
-    * @readonly
-    * @enum {string}
-    */
-    function RenderPrintMode() {
-        this.PDF = 'PDF';
-        this.HTML = 'HTML';
-        this.DEFAULT = 'DEFAULT';
-    }
-
-    /** 
-    * Print Mode
-    * @returns {string}
-    **/
-    this.PrintMode = new RenderPrintMode();
-};
+})();
 
 define([], function () {
-    return new N.modules.Render();
+    return new N.render.module();
 });

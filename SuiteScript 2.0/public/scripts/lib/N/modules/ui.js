@@ -10,14 +10,16 @@
 
 'use strict';
 
-N.modules.UI = function () {
+N.ui = {};
+
+N.ui.module = function () {
     /**
     * Instantiate a assistant object (specifying the title, and whether to hide the menu)
     * @restriction Server SuiteScript only
     * @param {Object} config
     * @param {string} config.title form title
     * @param {boolean} config.hideNavBar (optional)
-    * @return {Assistant}
+    * @return {N.ui.objects.Assistant}
     * @throws {error.SuiteScriptError} REQUIRED_PARAM_MISSING if config is missing or one of mandatory config properties not set
     * @throws {error.SuiteScriptError} CANNOT_CREATE_FORM if an error occurs during form creation
     * @since 2015.2
@@ -30,7 +32,7 @@ N.modules.UI = function () {
     * @param {Object} config
     * @param {string} config.title form title
     * @param {boolean} config.hideNavBar (optional)
-    * @return {Form}
+    * @return {N.ui.objects.Form}
     * @throws {error.SuiteScriptError} REQUIRED_PARAM_MISSING if config is missing or one of mandatory config properties not set
     * @throws {error.SuiteScriptError} CANNOT_CREATE_FORM if an error occurs during form creation
     * @since 2015.2
@@ -43,7 +45,7 @@ N.modules.UI = function () {
     * @param {Object} config
     * @param {string} config.title list title
     * @param {boolean} config.hideNavBar (optional)
-    * @return {List}
+    * @return {N.ui.objects.List}
     * @since 2015.2
     */
     this.createList = function (options) { };
@@ -172,6 +174,11 @@ N.modules.UI = function () {
     * @protected
     * @constructor
     */
+
+};
+
+N.ui.objects = (function () {   
+
     function Tab() {
         /**
         * The label of the field group
@@ -304,7 +311,7 @@ N.modules.UI = function () {
         * @param {string} options.type
         * @param {string} options.source (Optional)
         * @param {string} options.tab (Optional)
-        * @returns {ui.Field}
+        * @returns {Field}
         */
         this.addField = function (options) { };
     }
@@ -689,7 +696,7 @@ N.modules.UI = function () {
         * Get a Field object assistant its id
         * @param {Object} options
         * @param {string} options.id
-        * @return {ui.Field}
+        * @return {Field}
         */
         this.getField = function (options) { };
 
@@ -697,7 +704,7 @@ N.modules.UI = function () {
         * Get a FieldGroup  object from its id
         * @param {Object} options
         * @param {string} options.id
-        * @return {ui.Field}
+        * @return {Field}
         */
         this.getFieldGroup = function (options) { };
 
@@ -749,7 +756,7 @@ N.modules.UI = function () {
         * Get a Sublist  object from its id
         * @param {Object} options
         * @param {string} options.id
-        * @return {ui.Sublist}
+        * @return {Sublist}
         */
         this.getSublist = function (options) { };
 
@@ -769,7 +776,7 @@ N.modules.UI = function () {
         * @param {string} options.type
         * @param {string} options.source (Optional)
         * @param {string} options.tab (Optional)
-        * @returns {ui.Field}
+        * @returns {Field}
             */
         this.addField = function (options) { };
 
@@ -859,8 +866,331 @@ N.modules.UI = function () {
         */
         this.setURL = function (options) { };
     }
-};
+
+    /**
+    * Scriptable UI form page.
+    * @protected
+    * @constructor
+    */
+    function Form() {
+        /**
+        * The form title
+        * @name Form#title
+        * @type string
+        */
+        this.title = undefined;
+
+        /**
+        * Helper function for http.writePage()
+        */
+        this._writeTo = undefined;
+
+        /**
+        * Adds a button to the ui form
+        *
+        * @param {Object} options
+        * @param {String} options.id
+        * @param {String} options.label
+        * @param {String} options.script (optional)
+        * @returns {Button}
+        */
+        this.addButton = function (options) { };
+
+        /**
+        *
+        * @param {Object} options
+        * @param {String} options.id
+        * @param {String} options.label
+        * @param {String[]} options.restrictToDomains (Optional)
+        * @param {String} options.restrictToScriptId (Optional)
+        * @param {boolean} options.restrictToCurrentUser (Optional)
+        * @param {String} options.tab (Optional)
+        * @returns {Field}
+        */
+        this.addCredentialField = function (options) { };
+
+        /**
+        *
+        * @param {Object} options
+        * @param {String} options.id
+        * @param {String} options.label
+        * @param {String} options.restrictToScriptId
+        * @param {boolean} options.restrictToCurrentUser
+        * @param {String} options.tab (Optional)
+        * @returns {Field}
+        */
+        this.addSecretKeyField = function (options) { };
+
+        /**
+        * Add a field to the form
+        * @param {Object} options
+        * @param {string} options.id
+        * @param {string} options.label
+        * @param {string} options.type
+        * @param {string} options.source (Optional)
+        * @param {string} options.tab (Optional)
+        * @returns {Field}
+        */
+        this.addField = function (options) { };
+
+        /**
+        * Add a field group to the form
+        * @param {Object} options
+        * @param {string} options.id
+        * @param {string} options.label
+        * @param {string} options.tab (Optional)
+        *
+        * @return {FieldGroup}
+        */
+        this.addFieldGroup = function (options) { };
+
+        /**
+        * Add a link to the form
+        * @param {Object} options
+        * @param {string} options.type
+        * @param {string} options.title
+        * @param {string} options.url
+        */
+        this.addPageLink = function (options) { };
+
+        /**
+        * Add a Sublist to the form
+        * @param {Object} options
+        * @param {string} options.id
+        * @param {string} options.label
+        * @param {string} options.type
+        * @param {string} options.tab (optional)
+        * @return {Sublist}
+        */
+        this.addSublist = function (options) { };
+
+        /**
+        * Add a Subtab to the form
+        * @param {Object} options
+        * @param {string} options.id
+        * @param {string} options.label
+        * @param {string} options.tab (optional)
+        * @return {Tab}
+        */
+        this.addSubtab = function (options) { };
+
+        /**
+        * Add a Tab to the form
+        * @param {Object} options
+        * @param {string} options.id
+        * @param {string} options.label
+        * @return {Tab}
+        */
+        this.addTab = function (options) { };
+
+        /**
+        * Add a Reset button to the form
+        * @param {Object} options  (Optional)
+        * @param {string} options.label (Optional)
+        * @return {Button}
+        */
+        this.addResetButton = function (options) { };
+
+        /**
+        * Add a Submit button to the form
+        * @param {Object} options  (Optional)
+        * @param {string} options.label (Optional)
+        * @return {Button}
+        */
+        this.addSubmitButton = function (options) { };
+
+        /**
+        * Get a Button object from its id
+        * @param {Object} options
+        * @param {string} options.id
+        * @return {Button}
+        */
+        this.getButton = function (options) { };
+
+        /**
+        * Get a Field object from its id
+        * @param {Object} options
+        * @param {string} options.id
+        * @return {Field}
+        */
+        this.getField = function (options) { };
+
+        /**
+        * Get a Subtab object from its id
+        * @param {Object} options
+        * @param {string} options.id
+        * @return {Tab}
+        */
+        this.getSubtab = function (options) { };
+
+        /**
+        * Get a Tab object from its id
+        * @param {Object} options
+        * @param {string} options.id
+        * @return {Tab}
+        */
+        this.getTab = function (options) { };
+
+        /**
+        * Get all the Tab objects
+        * @return {String[]}
+        */
+        this.getTabs = function (options) { };
+
+        /**
+        * Get a Sublist object from its id
+        * @param {Object} options
+        * @param {string} options.id
+        * @return {Sublist}
+        */
+        this.getSublist = function (options) { };
+
+        /**
+        * Insert a field before another field
+        * @param {Object} options
+        * @param {Field} options.field
+        * @param {String} options.nextfield
+        */
+        this.insertField = function (options) { };
+
+        /**
+        * Insert a sublist before another sublist
+        * @param {Object} options
+        * @param {Sublist} options.sublist
+        * @param {String} options.nextsublist
+        */
+        this.insertSublist = function (options) { };
+
+        /**
+        * Insert a Tab before another tab
+        * @param {Object} options
+        * @param {Tab} options.tab
+        * @param {String} options.nexttab
+        */
+        this.insertTab = function (options) { };
+
+        /**
+        * Remove a button given its id
+        * @param {Object} options
+        * @param {string} options.id
+        */
+        this.removeButton = function (options) { };
+
+        /**
+        * Set the default values of many fields
+        * @param {Object[]} values
+        */
+        this.setDefaultValues = function (options) { };
+
+        /**
+        * Set the client script id to be used in the form
+        * @param {Object}options
+        * @param {String}options.script
+        */
+        this.clientScript = function (options) { };
+    }
+
+    /**
+    * Scriptable UI List page.
+    * @param delegate
+    * @protected
+    * @constructor
+    */
+    function List() {
+        /**
+        * @name ListStyle  Display style for this list
+        * @type string
+        * @since 2015.2
+        */
+        this.style = undefined;
+
+        /**
+        * @name List#title  Display style for this list
+        * @type string
+        * @since 2015.2
+        */
+        this.title = undefined;
+
+        /**
+        * Add a Button to the list page
+        * @param {Object} options
+        * @param {string} options.id
+        * @param {string} options.label
+        * @param {string} options.script  (optional)
+        * @return {Button}
+        */
+        this.addButton = function (options) { };
+
+        /**
+        * Add a Column to the List page
+        * @param {Object} options
+        * @param {string} options.id
+        * @param {string} options.type
+        * @param {string} options.label
+        * @param {string} options.align (optional)
+        * @return {ListColumn}
+        */
+        this.addColumn = function (options) { };
+
+        /**
+        * Add an Edit or Edit/View column
+        * @param {Object} options
+        * @param {string} options.column
+        * @param {string} options.showView   (optional)
+        * @param {string} options.showHrefCol (optional)
+        * @return {ListColumn}
+        */
+        this.addEditColumn = function (options) { };
+
+        /**
+        * Adds a navigation cross-link to the list page
+        * @param {Object} options
+        * @param {string} options.type
+        * @param {string} options.title
+        * @param {string} options.url
+        * @return {List}
+        */
+        this.addPageLink = function (options) { };
+
+        /**
+        * Add a row (Array of name/value pairs or search.Result)
+        * @param {Object} options
+        * @param {string} options.row
+        * @return {ListColumn}
+        */
+        this.addRow = function (options) { };
+
+        /**
+        * Adds multiple rows (Array of search.Result or name/value pair Arrays)
+        * @param {Object} options
+        * @param {string} options.rows
+        * @return {ListColumn}
+        */
+        this.addRows = function (options) { };
+
+        /**
+        * Sets the Client SuiteScript used for this page.
+        * @param {Object} options
+        * @param {string} options.id
+        * @return {ListColumn}
+        */
+        this.clientScript = function (options) { };
+    }
+
+    return {
+        Tab: Tab,
+        Sublist: Sublist,
+        FieldGroup: FieldGroup,
+        Field: Field,
+        Button: Button,
+        AssistantStep: AssistantStep,
+        Assistant: Assistant,
+        ListColumn: ListColumn,
+        Form: Form,
+        List: List
+    };
+})();
 
 define([], function () {
-    return new N.modules.UI();
+    return new N.modules.ui();
 });

@@ -59,7 +59,7 @@
     <Content Include="public\scripts\lib\N\modules\redirect.js" />
     <Content Include="public\scripts\lib\N\modules\render.js" />
     <Content Include="public\scripts\lib\N\modules\runtime.js" />
-    <Content Include="public\scripts\lib\N\shared\scriptcontext.js" />
+    <Content Include="public\scripts\lib\N\scriptcontext.js" />
     <Content Include="public\scripts\lib\N\modules\search.js" />
     <Content Include="public\scripts\lib\N\modules\sso.js" />
     <Content Include="public\scripts\lib\N\modules\task.js" />
@@ -75,12 +75,7 @@
     <Content Include="public\scripts\lib\N\N.js" />
     <Content Include="public\scripts\SuiteScript\_SAMPLE_UE.js" />
     <Content Include="public\scripts\SuiteScript\_SAMPLE_CS.js" />
-    <Content Include="public\scripts\lib\N\shared\record.js" />
-    <Content Include="public\scripts\lib\N\shared\file.js" />
     <Content Include="public\scripts\SuiteScript\_SAMPLE_SL.js" />
-    <Content Include="public\scripts\lib\N\shared\http.js" />
-    <Content Include="public\scripts\lib\N\shared\form.js" />
-    <Content Include="public\scripts\lib\N\shared\list.js" />
     <Compile Include="server.js" />
     <Content Include="jshint.json" />
     <Content Include="package.json" />
@@ -97,7 +92,7 @@
     <Folder Include="public\scripts\" />
     <Folder Include="public\scripts\lib\" />
     <Folder Include="public\scripts\lib\N\modules\" />
-    <Folder Include="public\scripts\lib\N\shared\" />
+    <Folder Include="public\scripts\lib\N\objects\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="public\scripts\SuiteScript\" />
     <Folder Include="public\scripts\lib\N\" />

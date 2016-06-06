@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.SSO = function () {
+N.sso = {};
+
+N.sso.module = function () {
     /**
     * Generate a new SuiteSignOn token for a user
     *
@@ -26,5 +28,5 @@ N.modules.SSO = function () {
 };
 
 define([], function () {
-    return new N.modules.SSO();
+    return new N.sso.module();
 });

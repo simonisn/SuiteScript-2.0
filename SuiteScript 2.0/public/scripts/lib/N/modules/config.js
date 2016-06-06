@@ -9,7 +9,7 @@
 
 'use strict';
 
-N.modules.Config = function () {
+N.config.module = function () {
 
     /**
     * Load a configuration object with a specific type
@@ -19,7 +19,7 @@ N.modules.Config = function () {
     * @param {Object} options
     * @param {string} options.type one of the Type values
     * @param {boolean} options.isDynamic load record in dynamic or deferred dynamic mode
-    * @return {N.objects.Record}
+    * @return {N.record.objects.Record}
     *
     * @throws {error.SuiteScriptError} INVALID_RCRD_TYPE
     *
@@ -47,5 +47,5 @@ N.modules.Config = function () {
 };
 
 define([], function () {
-    return new N.modules.Config();
+    return new N.config.module();
 });

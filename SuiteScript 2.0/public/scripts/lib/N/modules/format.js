@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.Format = function () {
+N.format = {};
+
+N.format.module = function () {
     /**
     * Parse a value from the appropriate preference formatted-value to a raw value.
     *
@@ -179,5 +181,5 @@ N.modules.Format = function () {
 };
 
 define([], function () {
-    return new N.modules.Format();
+    return new N.format.module();
 });

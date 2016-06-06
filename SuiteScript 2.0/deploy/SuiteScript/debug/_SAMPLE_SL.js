@@ -1,31 +1,32 @@
+/// <reference path="../lib/N/N.js" />
+/// <reference path="../lib/N/scriptcontext.js" />
+/// <reference path="../lib/N/modules/ui.js" />
+/// <reference path="../lib/N/modules/runtime.js" />
+/// <reference path="../lib/N/modules/email.js" />
+
+
 /**
  *@NApiVersion 2.x
  *@NScriptType Suitelet
  */
-
-/// <reference path="../lib/N/modules/ui.js" />
-/// <reference path="../lib/N/modules/runtime.js" />
-/// <reference path="../lib/N/modules/email.js" />
-/// <reference path="../lib/N/shared/scriptcontext.js" />
 
 'use strict';
 
 define(['N/ui', 'N/email', 'N/runtime'],
     /**
     *
-    * @param {N.modules.UI} ui
-    * @param {N.modules.Email} email
-    * @param {N.modules.Runtime} runtime
+    * @param {N.ui.module} ui
+    * @param {N.email.module} email
+    * @param {N.runtime.module} runtime
     */
     function (ui, email, runtime) {
         var onRequest;
-
+        
         /**
         * Definition of the Suitelet script trigger point.
         *
-        * @param {N.shared.ScriptContext.SL} context
-        */
-        
+        * @param {N.scriptContext.SL} context
+        */        
         onRequest = function (context) {
             
             if (context.request.method === 'GET') {
@@ -68,7 +69,8 @@ define(['N/ui', 'N/email', 'N/runtime'],
                     body: request.parameters.message
                 });
             }
-        }
+        };
+
         return {
             onRequest: onRequest
         };

@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.Redirect = function () {
+N.redirect = {};
+
+N.redirect.module = function () {
     /**
     * Redirect to a URL
     *
@@ -109,5 +111,5 @@ N.modules.Redirect = function () {
 };
 
 define([], function () {
-    return new N.modules.Redirect();
+    return new N.redirect.module();
 });

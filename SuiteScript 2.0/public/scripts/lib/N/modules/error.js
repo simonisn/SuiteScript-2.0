@@ -1,3 +1,5 @@
+/// <reference path="../N.js" />
+
 /**
 * SuiteScript error module
 *
@@ -8,8 +10,23 @@
 
 'use strict';
 
+N.error = {};
 
-function Error() {
+N.error.module = function () {
+
+    /**
+    * Create a new Error object
+    *
+    * @param {Object} options
+    * @param {string} options.name
+    * @param {string} options.message
+    * @param {string} options.notifyOff
+    * @return {N.error.objects.SuiteScriptError}
+    */
+    this.create = function (options) { return new N.error.objects.SuiteScriptError(); };
+};
+
+N.error.objects = (function () {
     /**
     *
     * @protected
@@ -68,18 +85,12 @@ function Error() {
         this.eventType = undefined;
     }
 
-    /**
-    * Create a new Error object
-    *
-    * @param {Object} options
-    * @param {string} options.name
-    * @param {string} options.message
-    * @param {string} options.notifyOff
-    * @return {SuiteScriptError}
-    */
-    this.create = function (options) { return new SuiteScriptError(); };
-}
+    return {
+        SuiteScriptError: SuiteScriptError,
+        UserEventError: UserEventError
+    };
+})();
 
 define([], function () {
-    return new Error();
+    return new N.error.module();    
 });

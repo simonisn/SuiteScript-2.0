@@ -10,8 +10,102 @@
 
 'use strict';
 
-N.modules.Crypto = function () {
+N.crypto = {};
 
+N.crypto.module = function () {
+
+    /**
+    *
+    * @param options
+    * @string options.guid
+    * @string options.encoding
+    * @return {N.crypto..objects.SecretKey}
+    */
+    this.createSecretKey = function (options) { return new N.crypto.objects.SecretKey(); };
+
+    /**
+    *
+    * @param {Object} options
+    * @param {string} options.algorithm
+    * @return {N.crypto.objects.Hash}
+    */
+    this.createHash = function (options) { return new N.crypto.objects.Hash(); };
+
+    /**
+    *
+    * @param {Object} options
+    * @param {string} options.algorithm
+    * @param {N.crypto.objects.SecretKey} options.key
+    * @return {Hmac}
+    */
+    this.createHmac = function (options) { return new N.crypto.objects.Hmac(); };
+
+    /**
+    *
+    * @param {object} options
+    * @param {string} options.algorithm
+    * @param {N.crypto.objects.SecretKey} options.key
+    * @param {string} options.blockCipherMode
+    * @param {string} options.padding
+    * @return {N.crypto.objects.Cipher}
+    */
+    this.createCipher = function (options) { return new N.crypto.objects.Cipher(); };
+
+    /**
+    *
+    * @param {object} options
+    * @param {string} options.algorithm
+    * @param {string} options.key
+    * @param {string} options.blockCipherMode
+    * @param {string} options.padding
+    * @param {string} options.iv
+    * @return {Decipher}
+    */
+    this.createDecipher = function (options) { return new N.crypto.objects.Decipher(); };
+
+    /**
+    * @enum
+    */
+    function CryptoHashAlg() {
+        this.SHA1 = 'SHA1';
+        this.SHA256 = 'SHA256';
+        this.SHA512 = 'SHA512';
+        this.MD5 = 'MD5';
+    }
+    this.HashAlg = new CryptoHashAlg();
+
+    /**
+    * @enum
+    */
+    function CryptoEncryptionAlg() {
+        this.AES = 'AES';
+    }
+    this.EncryptionAlg = new CryptoEncryptionAlg();
+
+    /**
+    * @enum
+    */
+    function CryptoEncoding() {
+        this.UTF_8 = 'UTF_8';
+        this.BASE_16 = 'BASE_16';
+        this.BASE_32 = 'BASE_32';
+        this.BASE_64 = 'BASE_64';
+        this.BASE_64_URL_SAFE = 'BASE_64_URL_SAFE';
+        this.HEX = 'HEX';
+    }
+    this.Encoding = new CryptoEncoding();
+
+    /**
+    * @enum
+    */
+    function CryptoPadding() {
+        this.NoPadding = 'NoPadding';
+        this.PKCS5Padding = 'PKCS5Padding';
+    }
+    this.Padding = new CryptoPadding();
+};
+
+N.crypto.objects = (function () {
     /**
     * Returns a new instance of SecretKey used for hmac, cipher and decipher
     *
@@ -161,97 +255,16 @@ N.modules.Crypto = function () {
         this.final = function (options) { };
     }
 
-/**
-    *
-    * @param options
-    * @string options.guid
-    * @string options.encoding
-    * @return {SecretKey}
-    */
-    this.createSecretKey = function (options) { return new SecretKey(); };
-
-    /**
-    *
-    * @param {Object} options
-    * @param {string} options.algorithm
-    * @return {Hash}
-    */
-    this.createHash = function (options) { return new Hash(); };
-
-    /**
-    *
-    * @param {Object} options
-    * @param {string} options.algorithm
-    * @param {SecretKey} options.key
-    * @return {Hmac}
-    */
-    this.createHmac = function (options) { return new Hmac(); };
-
-    /**
-    *
-    * @param {object} options
-    * @param {string} options.algorithm
-    * @param {crypto.SecretKey} options.key
-    * @param {string} options.blockCipherMode
-    * @param {string} options.padding
-    * @return {Cipher}
-    */
-    this.createCipher = function (options) { return new Cipher(); };
-
-    /**
-    *
-    * @param {object} options
-    * @param {string} options.algorithm
-    * @param {string} options.key
-    * @param {string} options.blockCipherMode
-    * @param {string} options.padding
-    * @param {string} options.iv
-    * @return {Decipher}
-    */
-    this.createDecipher = function (options) { return new Decipher(); };
-
-    /**
-    * @enum
-    */
-    function CryptoHashAlg() {
-        this.SHA1 = 'SHA1';
-        this.SHA256 = 'SHA256';
-        this.SHA512 = 'SHA512';
-        this.MD5 = 'MD5';
-    }
-    this.HashAlg = new CryptoHashAlg();
-
-    /**
-    * @enum
-    */
-    function CryptoEncryptionAlg() {
-        this.AES = 'AES';
-    }
-    this.EncryptionAlg = new CryptoEncryptionAlg();
-
-    /**
-    * @enum
-    */
-    function CryptoEncoding() {
-        this.UTF_8 = 'UTF_8';
-        this.BASE_16 = 'BASE_16';
-        this.BASE_32 = 'BASE_32';
-        this.BASE_64 = 'BASE_64';
-        this.BASE_64_URL_SAFE = 'BASE_64_URL_SAFE';
-        this.HEX = 'HEX';
-    }
-    this.Encoding = new CryptoEncoding();
-
-    /**
-    * @enum
-    */
-    function CryptoPadding() {
-        this.NoPadding = 'NoPadding';
-        this.PKCS5Padding = 'PKCS5Padding';
-    }
-    this.Padding = new CryptoPadding();
-};
+    return {
+        SecretKey: SecretKey,
+        CipherPayload: CipherPayload,
+        Hash: Hash,
+        Hmac: Hmac,
+        Cipher: Cipher,
+        Decipher: Decipher
+    };
+})();
 
 define([], function () {
-     return new N.modules.Crypto();
+     return new N.crypto.module();
 });

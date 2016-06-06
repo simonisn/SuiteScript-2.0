@@ -10,13 +10,15 @@
 
 'use strict';
 
-N.modules.Task = function () {
+N.task = {};
+
+N.task.module = function () {
     /**
     * Creates a task of the given type and returns the task object.
     *
     * @param {Object} options
     * @param {string} options.taskType specifies the type of task to be created; use values from the task.TaskType enum
-    * @returns {task.ScheduledScriptTask | task.MapReduceScriptTask | task.CsvImportTask | task.EntityDeduplicationTask | task.WorkflowTriggerTask}
+    * @returns {N.task.objects.ScheduledScriptTask | N.task.objects.MapReduceScriptTask | N.task.objects.CsvImportTask | N.task.objects.EntityDeduplicationTask | N.task.objects.WorkflowTriggerTask}
     */
     this.create = function (options) { };
 
@@ -28,7 +30,7 @@ N.modules.Task = function () {
     *
     * @param {Object} options
     * @param {string} options.taskId
-    * @returns {task.TaskStatus}
+    * @returns {N.task.objects.TaskStatus}
     */
     this.checkStatus = function (options) { };
 
@@ -100,8 +102,10 @@ N.modules.Task = function () {
         this.REDUCE = 'REDUCE';
         this.SUMMARIZE = 'SUMMARIZE';
     }
-    this.MapReduceStage = new TaskMapReduceStage();
+    this.MapReduceStage = new TaskMapReduceStage();    
+};
 
+N.task.objects = (function () {
     /**
     * @protected
     * @constructor
@@ -759,8 +763,21 @@ N.modules.Task = function () {
         */
         this.toJSON = function (options) { };
     }
-};
+
+    return {
+        ScheduledScriptTask: ScheduledScriptTask,
+        ScheduledScriptTaskStatus: ScheduledScriptTaskStatus,
+        MapReduceScriptTask: MapReduceScriptTask,
+        MapReduceScriptTaskStatus: MapReduceScriptTaskStatus,
+        CsvImportTask: CsvImportTask,
+        CsvImportTaskStatus: CsvImportTaskStatus,
+        EntityDeduplicationTask: EntityDeduplicationTask,
+        EntityDeduplicationTaskStatus: EntityDeduplicationTaskStatus,
+        WorkflowTriggerTask: WorkflowTriggerTask,
+        WorkflowTriggerTaskStatus: WorkflowTriggerTaskStatus
+    };
+})();
 
 define([], function () {
-    return new N.modules.Task();
+    return new N.task.module();
 });

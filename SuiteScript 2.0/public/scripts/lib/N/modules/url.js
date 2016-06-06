@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.URL = function () {
+N.url = {};
+
+N.url.module = function () {
     /**
     * @param {Object} opts
     * @param {string} opts.recordType
@@ -62,5 +64,5 @@ N.modules.URL = function () {
 };
 
 define([], function () {
-    return new N.modules.URL();
+    return new N.url.module();
 });

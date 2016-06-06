@@ -10,7 +10,69 @@
 
 'use strict';
 
-N.modules.XML = function () {
+N.xml = {};
+
+N.xml.module = function () {
+    /**
+    * Prepares a String for use in XML by escaping XML markup (for example, angle brackets, quotation marks, and ampersands).
+    *
+    * @param {string} options.xmlText the XML text to be escaped
+    * @returns {string} the escaped XML
+    *
+    * @since 2015.2
+    */
+    this.escape = function (options) { };
+
+    /**
+    * Validates a supplied XML document against a supplied XML Schema (XSD Document).
+    *
+    * @param {Document} options.xml the XML document object
+    * @param {int|string} options.xsdFilePathOrId ID or path to the XSD file to validate the XML object against
+    * @param {int|string} options.importFolderPathOrId (optional) ID or path to a folder in the file cabinet containing additional XSD schemas which are imported by the parent XSD provided via "xsdFilePathOrId"
+    * @throws {error.SuiteScriptError} SSS_XML_DOES_NOT_CONFORM_TO_SCHEMA if XML provided is invalid with respect to the provided schema
+    * @throws {error.SuiteScriptError} SSS_INVALID_XML_SCHEMA_OR_DEPENDENCY if schema is an incorrectly structured XSD, or a dependent schema could not be found
+    * @returns {void}
+    *
+    * @since 2015.2
+    */
+    this.validate = function (options) { };
+
+    /**
+    * XML Parser Object
+    *
+    * @type {N.xml.objects.Parser}
+    */
+    this.Parser = new N.xml.objects.Parser();
+
+    /**
+    * XPath Query Object
+    *
+    * @type {N.xml.objects.XPath}
+    */
+    this.XPath = new N.xml.objects.XPath();
+
+    /**
+    * @enum
+    */
+    function XMLNodeType() {
+        this.ELEMENT_NODE = 'ELEMENT_NODE';
+        this.ATTRIBUTE_NODE = 'ATTRIBUTE_NODE';
+        this.TEXT_NODE = 'TEXT_NODE';
+        this.CDATA_SECTION_NODE = 'CDATA_SECTION_NODE';
+        this.ENTITY_REFERENCE_NODE = 'ENTITY_REFERENCE_NODE';
+        this.ENTITY_NODE = 'ENTITY_NODE';
+        this.ENTITY_NODE = 'ENTITY_NODE';
+        this.PROCESSING_INSTRUCTION_NODE = 'PROCESSING_INSTRUCTION_NODE';
+        this.COMMENT_NODE = 'COMMENT_NODE';
+        this.DOCUMENT_NODE = 'DOCUMENT_NODE';
+        this.DOCUMENT_TYPE_NODE = 'DOCUMENT_TYPE_NODE';
+        this.DOCUMENT_FRAGMENT_NODE = 'DOCUMENT_FRAGMENT_NODE';
+        this.NOTATION_NODE = 'NOTATION_NODE';
+    }
+    this.NodeType = new XMLNodeType();
+};
+
+N.xml.objects = (function () {
     /**
     * XML Parser Object
     */
@@ -744,65 +806,16 @@ N.modules.XML = function () {
         this.value = undefined;
     }
 
-    /**
-    * Prepares a String for use in XML by escaping XML markup (for example, angle brackets, quotation marks, and ampersands).
-    *
-    * @param {string} options.xmlText the XML text to be escaped
-    * @returns {string} the escaped XML
-    *
-    * @since 2015.2
-    */
-    this.escape = function (options) { };
-
-    /**
-    * Validates a supplied XML document against a supplied XML Schema (XSD Document).
-    *
-    * @param {Document} options.xml the XML document object
-    * @param {int|string} options.xsdFilePathOrId ID or path to the XSD file to validate the XML object against
-    * @param {int|string} options.importFolderPathOrId (optional) ID or path to a folder in the file cabinet containing additional XSD schemas which are imported by the parent XSD provided via "xsdFilePathOrId"
-    * @throws {error.SuiteScriptError} SSS_XML_DOES_NOT_CONFORM_TO_SCHEMA if XML provided is invalid with respect to the provided schema
-    * @throws {error.SuiteScriptError} SSS_INVALID_XML_SCHEMA_OR_DEPENDENCY if schema is an incorrectly structured XSD, or a dependent schema could not be found
-    * @returns {void}
-    *
-    * @since 2015.2
-    */
-    this.validate = function (options) { };
-
-    /**
-    * XML Parser Object
-    *
-    * @type Parser
-    */
-    this.Parser = new Parser();
-
-    /**
-    * XPath Query Object
-    *
-    * @type XPath
-    */
-    this.XPath = new XPath();
-
-    /**
-    * @enum
-    */
-    function XMLNodeType() {
-        this.ELEMENT_NODE = 'ELEMENT_NODE';
-        this.ATTRIBUTE_NODE = 'ATTRIBUTE_NODE';
-        this.TEXT_NODE = 'TEXT_NODE';
-        this.CDATA_SECTION_NODE = 'CDATA_SECTION_NODE';
-        this.ENTITY_REFERENCE_NODE = 'ENTITY_REFERENCE_NODE';
-        this.ENTITY_NODE = 'ENTITY_NODE';
-        this.ENTITY_NODE = 'ENTITY_NODE';
-        this.PROCESSING_INSTRUCTION_NODE = 'PROCESSING_INSTRUCTION_NODE';
-        this.COMMENT_NODE = 'COMMENT_NODE';
-        this.DOCUMENT_NODE = 'DOCUMENT_NODE';
-        this.DOCUMENT_TYPE_NODE = 'DOCUMENT_TYPE_NODE';
-        this.DOCUMENT_FRAGMENT_NODE = 'DOCUMENT_FRAGMENT_NODE';
-        this.NOTATION_NODE = 'NOTATION_NODE';
-    }
-    this.NodeType = new XMLNodeType();
-};
+    return {
+        Parser: Parser,
+        XPath: XPath,
+        Node: Node,
+        Document: Document,
+        Element: Element,
+        Attr: Attr
+    };
+})();
 
 define([], function () {
-    return new N.modules.XML();
+    return new N.xml.module();
 });

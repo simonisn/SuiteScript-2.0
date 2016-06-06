@@ -10,8 +10,9 @@
 
 'use strict';
 
+N.http = {};
 
-N.modules.HTTP = function () {
+N.http.module = function () {
     /**
     * Enum describing available HTTP methods.
     * @enum {string}
@@ -201,5 +202,5 @@ N.modules.HTTP = function () {
 };
 
 define([], function () {
-    return new N.modules.HTTP();
+    return new N.http.module();
 });

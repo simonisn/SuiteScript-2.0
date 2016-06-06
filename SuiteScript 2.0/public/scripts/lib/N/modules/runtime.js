@@ -10,8 +10,155 @@
 
 'use strict';
 
-N.modules.Runtime = function () {
+N.runtime = {};
 
+N.runtime.module = function () {    
+
+    /**
+    * Get the current log in user object
+    * @return {N.runtime.objects.User}
+    */
+    this.getCurrentUser = function (options) {
+        return new N.runtime.objects.User();
+    };
+
+    /**
+    * Get the current executing Script object
+    * @return {N.runtime.objects.Script}
+    */
+    this.getCurrentScript = function (options) {
+        return new N.runtime.objects.Script();
+    };
+
+    /**
+    * Get the current session object
+    * @return {N.runtime.objects.Session}
+    */
+    this.getCurrentSession = function (options) {
+        return new N.runtime.objects.Session();
+    };
+
+    /**
+    * Check if a feature is turned on and in effect
+    * @param {Object} options
+    * @param { string } options.feature id of the feature
+    * @return {boolean}
+    */
+    this.isFeatureInEffect = function (options) { };
+
+    /**
+    * @name runtime#queueCount
+    * @type number
+    * @readonly
+    * @since 2015.2
+    */
+    this.queueCount = undefined;
+
+    /**
+    * @name runtime#version
+    * @type string
+    * @readonly
+    * @since 2015.2
+    */
+    this.version = undefined;
+
+    /**
+    * @name runtime#accountId
+    * @type string
+    * @readonly
+    * @since 2015.2
+    */
+    this.accountId = undefined;
+
+    /**
+    * @name runtime#envType
+    * @type string
+    * @readonly
+    * @since 2015.2
+    */
+    this.envType = undefined;
+
+    /**
+    * @name runtime#executionContext
+    * @type string
+    * @readonly
+    * @since 2015.2
+    */
+    this.executionContext = undefined;
+
+    /**
+    * get JSON format of the object
+    * @return {Object}
+    *
+    */
+    this.toJSON = function (options) { };
+
+    /**
+    * @return {string}
+    *
+    */
+    this.toString = function (options) { };
+
+    /**
+    * @enum
+    */
+    function RuntimeEnvType() {
+        this.SANDBOX = 'SANDBOX';
+        this.PRODUCTION = 'PRODUCTION';
+        this.BETA = 'BETA';
+        this.INTERNAL = 'INTERNAL';
+    }
+    this.EnvType = new RuntimeEnvType();
+
+    /**
+        * @enum
+        */
+    function RuntimeContextType() {
+        this.USER_INTERFACE = 'USERINTERFACE';
+        this.WEBSERVICES = 'WEBSERVICES';
+        this.WEBSTORE = 'WEBSTORE';
+        this.PORTLET = 'PORTLET';
+        this.SCHEDULED = 'SCHEDULED';
+        this.SUITELET = 'SUITELET';
+        this.CSV_IMPORT = 'CSVIMPORT';
+        this.CUSTOM_MASSUPDATE = 'CUSTOMMASSUPDATE';
+        this.WORKFLOW = 'WORKFLOW';
+        this.USEREVENT = 'USEREVENT';
+        this.OFFLINE_CLIENT = 'OFFLINECLIENT';
+        this.ACTION = 'ACTION';
+        this.DEBUGGER = 'DEBUGGER';
+        this.CLIENT = 'CLIENT';
+        this.SYSTEM = 'SYSTEM';
+        this.BUNDLE_INSTALLATION = 'BUNDLE_INSTALLATION';
+        this.RESTLET = 'RESTLET';
+        this.WEBAPPLICATION = 'WEBAPPLICATION';
+        this.APPPKG_INSTALL = 'APPPKGINSTALL';
+        this.PAYMENTGATEWAY = 'PAYMENTGATEWAY';
+        this.CONSOLRATEADJUSTOR = 'CONSOLRATEADJUSTOR';
+        this.TESTPLUGIN = 'TESTPLUGIN';
+        this.PROMOTIONS = 'PROMOTIONS';
+        this.CUSTOMGLLINES = 'CUSTOMGLLINES';
+        this.TAX_CALCULATION = 'TAXCALCULATION';
+        this.SHIPPING_PARTNERS = 'SHIPPINGPARTNERS';
+        this.EMAIL_CAPTURE = 'EMAILCAPTURE';
+    }
+
+    this.ContextType = new RuntimeContextType();
+
+    /**
+    * @enum
+    */
+    function RuntimePermission() {
+        this.FULL = 4.0;
+        this.EDIT = 3.0;
+        this.CREATE = 2.0;
+        this.VIEW = 1.0;
+        this.NONE = 0.0;
+    }
+    this.Permission = new RuntimePermission();
+};
+
+N.runtime.objects = (function () {
     /**
     * @protected
     * @constructor
@@ -258,150 +405,13 @@ N.modules.Runtime = function () {
         this.toString = function (options) { };
     }
 
-    /**
-        * Get the current log in user object
-        * @return {User}
-        */
-    this.getCurrentUser = function (options) {
-        return new User();
+    return {
+        Script: Script,
+        Session: Session,
+        User: User
     };
-
-    /**
-    * Get the current executing Script object
-    * @return {Script}
-    */
-    this.getCurrentScript = function (options) {
-        return new Script();
-    };
-
-    /**
-    * Get the current session object
-    * @return {Session}
-    */
-    this.getCurrentSession = function (options) {
-        return new Session();
-    };
-
-    /**
-    * Check if a feature is turned on and in effect
-    * @param {Object} options
-    * @param { string } options.feature id of the feature
-    * @return {boolean}
-    */
-    this.isFeatureInEffect = function (options) { };
-
-    /**
-    * @name runtime#queueCount
-    * @type number
-    * @readonly
-    * @since 2015.2
-    */
-    this.queueCount = undefined;
-
-    /**
-    * @name runtime#version
-    * @type string
-    * @readonly
-    * @since 2015.2
-    */
-    this.version = undefined;
-
-    /**
-    * @name runtime#accountId
-    * @type string
-    * @readonly
-    * @since 2015.2
-    */
-    this.accountId = undefined;
-
-    /**
-    * @name runtime#envType
-    * @type string
-    * @readonly
-    * @since 2015.2
-    */
-    this.envType = undefined;
-
-    /**
-    * @name runtime#executionContext
-    * @type string
-    * @readonly
-    * @since 2015.2
-    */
-    this.executionContext = undefined;
-
-    /**
-    * get JSON format of the object
-    * @return {Object}
-    *
-    */
-    this.toJSON = function (options) { };
-
-    /**
-    * @return {string}
-    *
-    */
-    this.toString = function (options) { };
-
-    /**
-    * @enum
-    */
-    function RuntimeEnvType() {
-        this.SANDBOX = 'SANDBOX';
-        this.PRODUCTION = 'PRODUCTION';
-        this.BETA = 'BETA';
-        this.INTERNAL = 'INTERNAL';
-    }
-    this.EnvType = new RuntimeEnvType();
-
-    /**
-        * @enum
-        */
-    function RuntimeContextType() {
-        this.USER_INTERFACE = 'USERINTERFACE';
-        this.WEBSERVICES = 'WEBSERVICES';
-        this.WEBSTORE = 'WEBSTORE';
-        this.PORTLET = 'PORTLET';
-        this.SCHEDULED = 'SCHEDULED';
-        this.SUITELET = 'SUITELET';
-        this.CSV_IMPORT = 'CSVIMPORT';
-        this.CUSTOM_MASSUPDATE = 'CUSTOMMASSUPDATE';
-        this.WORKFLOW = 'WORKFLOW';
-        this.USEREVENT = 'USEREVENT';
-        this.OFFLINE_CLIENT = 'OFFLINECLIENT';
-        this.ACTION = 'ACTION';
-        this.DEBUGGER = 'DEBUGGER';
-        this.CLIENT = 'CLIENT';
-        this.SYSTEM = 'SYSTEM';
-        this.BUNDLE_INSTALLATION = 'BUNDLE_INSTALLATION';
-        this.RESTLET = 'RESTLET';
-        this.WEBAPPLICATION = 'WEBAPPLICATION';
-        this.APPPKG_INSTALL = 'APPPKGINSTALL';
-        this.PAYMENTGATEWAY = 'PAYMENTGATEWAY';
-        this.CONSOLRATEADJUSTOR = 'CONSOLRATEADJUSTOR';
-        this.TESTPLUGIN = 'TESTPLUGIN';
-        this.PROMOTIONS = 'PROMOTIONS';
-        this.CUSTOMGLLINES = 'CUSTOMGLLINES';
-        this.TAX_CALCULATION = 'TAXCALCULATION';
-        this.SHIPPING_PARTNERS = 'SHIPPINGPARTNERS';
-        this.EMAIL_CAPTURE = 'EMAILCAPTURE';
-    }
-
-    this.ContextType = new RuntimeContextType();
-
-    /**
-    * @enum
-    */
-    function RuntimePermission() {
-        this.FULL = 4.0;
-        this.EDIT = 3.0;
-        this.CREATE = 2.0;
-        this.VIEW = 1.0;
-        this.NONE = 0.0;
-    }
-    this.Permission = new RuntimePermission();
-};
+})();
 
 define([], function () {
-    return new N.modules.Runtime();
+    return new N.runtime.module();
 });

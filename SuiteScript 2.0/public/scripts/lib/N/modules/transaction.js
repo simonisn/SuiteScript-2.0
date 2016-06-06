@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.Transaction = function () {
+N.transaction = {};
+
+N.transaction.module = function () {
     /**
     * Void a transaction record object based on provided type, id
     *
@@ -28,5 +30,5 @@ N.modules.Transaction = function () {
 };
  
 define([], function () {
-    return new N.modules.Transaction();
+    return new N.transaction.module();
 });

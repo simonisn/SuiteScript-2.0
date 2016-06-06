@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.HTTPS = function () {
+N.https = {};
+
+N.https.module = function () {
     /**
     * Enum for HTTP methods.
     * @enum {string}

@@ -10,8 +10,9 @@
 
 'use strict';
 
+N.email = {};
 
-N.modules.Email = function() {
+N.email.module = function() {
     /**
     * Send email with bounce back
     *
@@ -88,5 +89,5 @@ N.modules.Email = function() {
 };
 
 define([], function () {
-    return new N.modules.Email();
+    return new N.email.module();
 });

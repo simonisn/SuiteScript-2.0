@@ -9,7 +9,9 @@
 
 'use strict';
 
-N.modules.Auth = function () {
+N.auth = {};
+
+N.auth.module = function () {
 
     /**
     * Change current user's email
@@ -34,8 +36,7 @@ N.modules.Auth = function () {
     */
     this.changePassword = function (options) { };
 };
-
     
 define([], function () {    
-    return new N.modules.Auth();
+    return new N.auth.module();
 });

@@ -1,1 +1,1 @@
-"use strict";define(["N/record","N/search"],function(e,n){var r,t,f;return r=function(e){},t=function(e){},f=function(e){},{beforeLoad:r,beforeSubmit:t,afterSubmit:f}});
+"use strict";define(["N/record","N/search","N/ui"],function(e,n,r){var t,i,u;return t=function(e){},i=function(e){},u=function(e){},{beforeLoad:t,beforeSubmit:i,afterSubmit:u}});

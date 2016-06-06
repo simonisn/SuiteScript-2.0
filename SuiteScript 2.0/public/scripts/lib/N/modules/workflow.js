@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.Workflow = function () {
+N.workflow = {};
+
+N.workflow.module = function () {
     /**
     * Triggers a workflow on a record.
     * @governance 20 units
@@ -45,5 +47,5 @@ N.modules.Workflow = function () {
 };
 
 define([], function () {
-    return new N.modules.Workflow();
+    return new N.workflow.module();
 });

@@ -10,7 +10,9 @@
 
 'use strict';
 
-N.modules.Currency = function () {
+N.currency = {};
+
+N.currency.module = function () {
     /**
     * Retrieves the exchange rate between two currencies based on the specified date.
     * The return value comes from the Exchange Rate column of the Currency Exchange Rates record.
@@ -33,5 +35,5 @@ N.modules.Currency = function () {
 };
 
 define([], function () {
-    return new N.modules.Currency();
+    return new N.currency.module();
 });
