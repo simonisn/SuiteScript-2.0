@@ -20,7 +20,7 @@ N.modules.Record = function () {
     * @param {string} options.type record type
     * @param {boolean} [options.isDynamic=false] record is dynamic
     * @param {Object} [options.defaultValues={}] record default values
-    * @return {N.shared.Record}
+    * @return {N.objects.Record}
     *
     * @throws {error.SuiteScriptError} SSS_MISSING_REQD_ARGUMENT if options.type is missing
     *
@@ -38,7 +38,7 @@ N.modules.Record = function () {
         * @param {number|string} options.id record id
         * @param {boolean} [options.isDynamic=false] record is dynamic
         * @param {Object} [options.defaultValues={}] record default values
-        * @return {N.shared.Record}
+        * @return {N.objects.Record}
         *
         * @throws {error.SuiteScriptError} SSS_MISSING_REQD_ARGUMENT if options.type or options.id is missing
         *
@@ -56,7 +56,7 @@ N.modules.Record = function () {
         * @param {number|string} options.id record id
         * @param {boolean} [options.isDynamic=false] record is dynamic
         * @param {Object} [options.defaultValues={}] record default values
-        * @return {N.shared.Record}
+        * @return {N.objects.Record}
         *
         * @throws {error.SuiteScriptError} SSS_MISSING_REQD_ARGUMENT if options.type or options.id is missing
         *
@@ -75,7 +75,7 @@ N.modules.Record = function () {
         * @param {string} options.toType record type to be transformed to
         * @param {boolean} [options.isDynamic=false] record is dynamic
         * @param {Object} [options.defaultValues={}] transformed record's default values
-        * @return {N.shared.Record}
+        * @return {N.objects.Record}
         *
         * @throws {error.SuiteScriptError} SSS_MISSING_REQD_ARGUMENT if options.type or options.id is missing
         *

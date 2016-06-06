@@ -3,7 +3,7 @@
  * @NScriptType UserEventScript
  */
 
-/// <reference path="../lib/N/shared/scriptcontext.js" />
+/// <reference path="../lib/N/objects/scriptcontext.js" />
 /// <reference path="../lib/N/modules/record.js" />
 /// <reference path="../lib/N/modules/search.js" />
 
@@ -28,10 +28,10 @@ define(['N/record', 'N/search'],
         * This event cannot be used to source standard records. Use the pageInit client script for this purpose.
         * NOTE: beforeLoad user events cannot be triggered when you load/access an online form.
         *
-        * @param {N.shared.ScriptContext.UE} context
+        * @param {N.objects.ScriptContext.UE} context
         */
-        beforeLoad = function (context) {            
-               
+        beforeLoad = function (context) {                        
+
         };
 
         /**
@@ -39,7 +39,7 @@ define(['N/record', 'N/search'],
         * Changes made to the current record in this script persist after the write operation.
         * This event can be used to validate the submitted record, perform any restriction and permission checks, and perform any last-minute changes to the current record.
         *
-        * @param {N.shared.ScriptContext.UE} context
+        * @param {N.objects.ScriptContext.UE} context
         */
         beforeSubmit = function (context) {            
 
@@ -50,7 +50,7 @@ define(['N/record', 'N/search'],
         * This event can be used to include email notification, re-direct the browser, create dependent records, and synchronize with an external system.
         * NOTE: Asynchronous afterSubmit user events are only supported during webstore checkout.
         *
-        * @param {N.shared.ScriptContext.UE} context
+        * @param {N.objects.ScriptContext.UE} context
         */
         afterSubmit = function (context) {
 

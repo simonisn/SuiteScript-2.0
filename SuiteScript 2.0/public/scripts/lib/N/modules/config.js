@@ -19,7 +19,7 @@ N.modules.Config = function () {
     * @param {Object} options
     * @param {string} options.type one of the Type values
     * @param {boolean} options.isDynamic load record in dynamic or deferred dynamic mode
-    * @return {N.shared.Record}
+    * @return {N.objects.Record}
     *
     * @throws {error.SuiteScriptError} INVALID_RCRD_TYPE
     *

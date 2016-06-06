@@ -130,7 +130,7 @@ N.modules.Render = function () {
     * @param {string} options.printMode (optional) The output type: PDF|HTML|DEFAULT. DEFAULT uses the user/company preference for print output
     * @param {number} options.formId (optional)
     *
-    * @returns {N.shared.File}
+    * @returns {N.objects.File}
     */
     this.transaction = function (options) { };
 
@@ -146,7 +146,7 @@ N.modules.Render = function () {
     * @param {date} options.statementDate (optional)
     * @param {boolean} options.openTransactionsOnly  (optional)
     *
-    * @returns {N.shared.File}
+    * @returns {N.objects.File}
     */
     this.statement = function (options) { };
 
@@ -160,7 +160,7 @@ N.modules.Render = function () {
     * @param {number} options.formId  (optional)
     * @param {number} options.fulfillmentId (optional)
     *
-    * @returns {N.shared.File}
+    * @returns {N.objects.File}
     */
     this.packingSlip = function (options) { };
 
@@ -175,7 +175,7 @@ N.modules.Render = function () {
     * @param {number} options.shipgroup (optional)
     * @param {number} options.location (optional)
     *
-    * @returns {N.shared.File}
+    * @returns {N.objects.File}
     */
     this.pickingTicket = function (options) { };
 
@@ -187,7 +187,7 @@ N.modules.Render = function () {
     * @param {number} options.entityId
     * @param {string} options.printMode (optional)
     *
-    * @returns {N.shared.File}
+    * @returns {N.objects.File}
     */
     this.bom = function (options) { };
 
@@ -207,7 +207,7 @@ N.modules.Render = function () {
     *
     * @param {Object} options
     * @param {Document|string} options.xmlString
-    * @returns {N.shared.File}
+    * @returns {N.objects.File}
     */
     this.xmlToPdf = function (options) { };
 

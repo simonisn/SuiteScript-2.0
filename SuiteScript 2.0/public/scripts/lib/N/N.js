@@ -2,7 +2,7 @@
 
 var N = {
     modules: {},
-    shared: {}
+    objects: {}
 };
 
 define([], function () {

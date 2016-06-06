@@ -6,7 +6,7 @@
 /// <reference path="../lib/N/modules/ui.js" />
 /// <reference path="../lib/N/modules/runtime.js" />
 /// <reference path="../lib/N/modules/email.js" />
-/// <reference path="../lib/N/shared/scriptcontext.js" />
+/// <reference path="../lib/N/objects/scriptcontext.js" />
 
 'use strict';
 
@@ -23,7 +23,7 @@ define(['N/ui', 'N/email', 'N/runtime'],
         /**
         * Definition of the Suitelet script trigger point.
         *
-        * @param {N.shared.ScriptContext.SL} context
+        * @param {N.objects.ScriptContext.SL} context
         */
         
         onRequest = function (context) {

@@ -20,7 +20,7 @@ N.modules.File = function () {
     * @param {string} options.name file name
     * @param {string} options.fileType file type i.e. PLAINTEXT, HTMLDOC, PDF, WORD, see file.Type enum
     * @param {string} options.contents string containing file contents (must be base-64 encoded for binary types)
-    * @return {N.shared.File}
+    * @return {N.objects.File}
     *
     * @throws {error.SuiteScriptError} REQUIRED_PARAM_MISSING if options is missing or one of mandatory options properties not set
     * @throws {error.SuiteScriptError} SSS_INVALID_TYPE_ARG if options.fileType is an invalid type
@@ -37,7 +37,7 @@ N.modules.File = function () {
     *
     * @param {Object} options
     * @param {number|string} options.id internal ID or path to file in the file cabinet (i.e. /SuiteScript/foo.js)
-    * @return {N.shared.File}
+    * @return {N.objects.File}
     *
     * @throws {error.SuiteScriptError} REQUIRED_PARAM_MISSING if idOrPath parameter is missing
     * @throws {error.SuiteScriptError} RCRD_DSNT_EXIST attempt to load a file from non-existing path
