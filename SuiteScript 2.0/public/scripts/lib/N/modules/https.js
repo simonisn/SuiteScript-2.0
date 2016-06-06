@@ -333,5 +333,5 @@ N.https.module = function () {
 };
 
 define([], function () {
-    return new N.modules.HTTPS();
+    return new N.https.module();
 });

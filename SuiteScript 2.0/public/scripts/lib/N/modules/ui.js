@@ -1192,5 +1192,5 @@ N.ui.objects = (function () {
 })();
 
 define([], function () {
-    return new N.modules.ui();
+    return new N.ui.module();
 });

@@ -9,6 +9,8 @@
 
 'use strict';
 
+N.config = {};
+
 N.config.module = function () {
 
     /**
