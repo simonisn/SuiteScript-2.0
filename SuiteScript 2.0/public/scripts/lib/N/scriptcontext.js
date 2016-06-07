@@ -1,6 +1,6 @@
 ﻿/// <reference path="N.js" />
-/// <reference path="../modules/record.js" />
-/// <reference path="../modules/ui.js" />
+/// <reference path="./modules/ui.js" />
+/// <reference path="./modules/record.js" />
 
 'use strict';
 

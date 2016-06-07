@@ -1,147 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-	<PropertyGroup>
-		<VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
-		<VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-		<Name>SuiteScript 2.0</Name>
-		<RootNamespace>CARMA</RootNamespace>
-		<SccProjectName>SAK</SccProjectName>
-		<SccProvider>SAK</SccProvider>
-		<SccAuxPath>SAK</SccAuxPath>
-		<SccLocalPath>SAK</SccLocalPath>
-	</PropertyGroup>
-	<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<SchemaVersion>2.0</SchemaVersion>
-		<ProjectGuid>8a838c4d-2d3e-41ec-941f-1aa94db599d8</ProjectGuid>
-		<ProjectHome>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>SuiteScript 2.0</Name>
+    <RootNamespace>CARMA</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>8a838c4d-2d3e-41ec-941f-1aa94db599d8</ProjectGuid>
+    <ProjectHome>
     </ProjectHome>
-		<StartupFile>server.js</StartupFile>
-		<SearchPath>
+    <StartupFile>server.js</StartupFile>
+    <SearchPath>
     </SearchPath>
-		<WorkingDirectory>.</WorkingDirectory>
-		<OutputPath>.</OutputPath>
-		<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-		<ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-		<ProjectView>ShowAllFiles</ProjectView>
-		<NodejsPort>1337</NodejsPort>
-		<StartWebBrowser>true</StartWebBrowser>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<DebugSymbols>true</DebugSymbols>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-		<DebugSymbols>true</DebugSymbols>
-	</PropertyGroup>
-	<ItemGroup>
-		<Compile Include="deploy\SuiteScript\debug\_SAMPLE_CS.js"/>
-		<Compile Include="deploy\SuiteScript\debug\_SAMPLE_SL.js"/>
-		<Compile Include="deploy\SuiteScript\debug\_SAMPLE_UE.js"/>
-		<Compile Include="deploy\SuiteScript\release\_SAMPLE_CS.js"/>
-		<Compile Include="deploy\SuiteScript\release\_SAMPLE_SL.js"/>
-		<Compile Include="deploy\SuiteScript\release\_SAMPLE_UE.js"/>
-		<Compile Include="gulpfile.js"/>
-		<Content Include="public\scripts\lib\moduleViewer.js"/>
-		<Content Include="public\scripts\lib\N\modules\auth.js"/>
-		<Content Include="public\scripts\lib\N\modules\config.js"/>
-		<Content Include="public\scripts\lib\N\modules\crypto.js"/>
-		<Content Include="public\scripts\lib\N\modules\currency.js"/>
-		<Content Include="public\scripts\lib\N\modules\email.js"/>
-		<Content Include="public\scripts\lib\N\modules\encode.js"/>
-		<Content Include="public\scripts\lib\N\modules\error.js"/>
-		<Content Include="public\scripts\lib\N\modules\file.js"/>
-		<Content Include="public\scripts\lib\N\modules\format.js"/>
-		<Content Include="public\scripts\lib\N\modules\http.js"/>
-		<Content Include="public\scripts\lib\N\modules\https.js"/>
-		<Content Include="public\scripts\lib\N\modules\log.js"/>
-		<Content Include="public\scripts\lib\N\modules\record.js"/>
-		<Content Include="public\scripts\lib\N\modules\redirect.js"/>
-		<Content Include="public\scripts\lib\N\modules\render.js"/>
-		<Content Include="public\scripts\lib\N\modules\runtime.js"/>
-		<Content Include="public\scripts\lib\N\scriptcontext.js"/>
-		<Content Include="public\scripts\lib\N\modules\search.js"/>
-		<Content Include="public\scripts\lib\N\modules\sso.js"/>
-		<Content Include="public\scripts\lib\N\modules\task.js"/>
-		<Content Include="public\scripts\lib\N\modules\transaction.js"/>
-		<Content Include="public\scripts\lib\N\modules\ui.js"/>
-		<Content Include="public\scripts\lib\N\modules\url.js"/>
-		<Content Include="public\scripts\lib\N\modules\util.js"/>
-		<Content Include="public\scripts\lib\N\modules\workflow.js"/>
-		<Content Include="public\scripts\lib\N\modules\xml.js"/>
-		<Content Include="public\scripts\lib\require.js"/>
-		<Content Include="public\scripts\main.js"/>
-		<Content Include="public\scripts\lib\jquery-1.12.4.min.js"/>
-		<Content Include="public\scripts\lib\N\N.js"/>
-		<Content Include="public\scripts\SuiteScript\_SAMPLE_UE.js"/>
-		<Content Include="public\scripts\SuiteScript\_SAMPLE_CS.js"/>
-		<Content Include="public\scripts\SuiteScript\_SAMPLE_SL.js"/>
-		<Compile Include="server.js"/>
-		<Content Include="jshint.json"/>
-		<Content Include="package.json"/>
-		<Content Include="public\index.html"/>
-		<Content Include="public\stylesheets\suitescript.css"/>
-		<Content Include="README.md"/>
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="deploy\"/>
-		<Folder Include="deploy\SuiteScript\"/>
-		<Folder Include="deploy\SuiteScript\debug\"/>
-		<Folder Include="deploy\SuiteScript\release\"/>
-		<Folder Include="public\"/>
-		<Folder Include="public\scripts\"/>
-		<Folder Include="public\scripts\lib\"/>
-		<Folder Include="public\scripts\lib\N\modules\"/>
-		<Folder Include="public\scripts\lib\N\objects\"/>
-		<Folder Include="public\stylesheets\"/>
-		<Folder Include="public\scripts\SuiteScript\"/>
-		<Folder Include="public\scripts\lib\N\"/>
-	</ItemGroup>
-<PropertyGroup>
-  <PreBuildEvent>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="deploy\SuiteScript\debug\_SAMPLE_CS.js" />
+    <Compile Include="deploy\SuiteScript\debug\_SAMPLE_SL.js" />
+    <Compile Include="deploy\SuiteScript\debug\_SAMPLE_UE.js" />
+    <Compile Include="deploy\SuiteScript\release\_SAMPLE_CS.js" />
+    <Compile Include="deploy\SuiteScript\release\_SAMPLE_SL.js" />
+    <Compile Include="deploy\SuiteScript\release\_SAMPLE_UE.js" />
+    <Compile Include="gulpfile.js" />
+    <Content Include="public\scripts\lib\moduleViewer.js" />
+    <Content Include="public\scripts\lib\N\modules\auth.js" />
+    <Content Include="public\scripts\lib\N\modules\config.js" />
+    <Content Include="public\scripts\lib\N\modules\crypto.js" />
+    <Content Include="public\scripts\lib\N\modules\currency.js" />
+    <Content Include="public\scripts\lib\N\modules\email.js" />
+    <Content Include="public\scripts\lib\N\modules\encode.js" />
+    <Content Include="public\scripts\lib\N\modules\error.js" />
+    <Content Include="public\scripts\lib\N\modules\file.js" />
+    <Content Include="public\scripts\lib\N\modules\format.js" />
+    <Content Include="public\scripts\lib\N\modules\http.js" />
+    <Content Include="public\scripts\lib\N\modules\https.js" />
+    <Content Include="public\scripts\lib\N\modules\log.js" />
+    <Content Include="public\scripts\lib\N\modules\record.js" />
+    <Content Include="public\scripts\lib\N\modules\redirect.js" />
+    <Content Include="public\scripts\lib\N\modules\render.js" />
+    <Content Include="public\scripts\lib\N\modules\runtime.js" />
+    <Content Include="public\scripts\lib\N\scriptcontext.js" />
+    <Content Include="public\scripts\lib\N\modules\search.js" />
+    <Content Include="public\scripts\lib\N\modules\sso.js" />
+    <Content Include="public\scripts\lib\N\modules\task.js" />
+    <Content Include="public\scripts\lib\N\modules\transaction.js" />
+    <Content Include="public\scripts\lib\N\modules\ui.js" />
+    <Content Include="public\scripts\lib\N\modules\url.js" />
+    <Content Include="public\scripts\lib\N\modules\util.js" />
+    <Content Include="public\scripts\lib\N\modules\workflow.js" />
+    <Content Include="public\scripts\lib\N\modules\xml.js" />
+    <Content Include="public\scripts\lib\require.js" />
+    <Content Include="public\scripts\main.js" />
+    <Content Include="public\scripts\lib\jquery-1.12.4.min.js" />
+    <Content Include="public\scripts\lib\N\N.js" />
+    <Content Include="public\scripts\SuiteScript\_SAMPLE_UE.js" />
+    <Content Include="public\scripts\SuiteScript\_SAMPLE_CS.js" />
+    <Content Include="public\scripts\SuiteScript\_SAMPLE_SL.js" />
+    <Compile Include="server.js" />
+    <Content Include="jshint.json" />
+    <Content Include="package.json" />
+    <Content Include="public\index.html" />
+    <Content Include="public\stylesheets\suitescript.css" />
+    <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="deploy\" />
+    <Folder Include="deploy\SuiteScript\" />
+    <Folder Include="deploy\SuiteScript\debug\" />
+    <Folder Include="deploy\SuiteScript\release\" />
+    <Folder Include="public\" />
+    <Folder Include="public\scripts\" />
+    <Folder Include="public\scripts\lib\" />
+    <Folder Include="public\scripts\lib\N\modules\" />
+    <Folder Include="public\stylesheets\" />
+    <Folder Include="public\scripts\SuiteScript\" />
+    <Folder Include="public\scripts\lib\N\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
       cmd.exe /c gulp -b "$(ProjectDir)SuiteScript 2.0" --no-color --gulpfile "$(ProjectDir)Gulpfile.js" jshint
   </PreBuildEvent>
-</PropertyGroup>
-	<!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
-	<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False"/>
-	<Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets"/>
-	<ProjectExtensions>
-		<VisualStudio>
-			<FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
-				<WebProjectProperties>
-					<UseIIS>False</UseIIS>
-					<AutoAssignPort>True</AutoAssignPort>
-					<DevelopmentServerPort>0</DevelopmentServerPort>
-					<DevelopmentServerVPath>/</DevelopmentServerVPath>
-					<IISUrl>http://localhost:48022/</IISUrl>
-					<NTLMAuthentication>False</NTLMAuthentication>
-					<UseCustomServer>True</UseCustomServer>
-					<CustomServerUrl>http://localhost:1337</CustomServerUrl>
-					<SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
-				</WebProjectProperties>
-			</FlavorProperties>
-			<FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
-				<WebProjectProperties>
-					<StartPageUrl>
+  </PropertyGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
           </StartPageUrl>
-					<StartAction>CurrentPage</StartAction>
-					<AspNetDebugging>True</AspNetDebugging>
-					<SilverlightDebugging>False</SilverlightDebugging>
-					<NativeDebugging>False</NativeDebugging>
-					<SQLDebugging>False</SQLDebugging>
-					<ExternalProgram>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
           </ExternalProgram>
-					<StartExternalURL>
+          <StartExternalURL>
           </StartExternalURL>
-					<StartCmdLineArguments>
+          <StartCmdLineArguments>
           </StartCmdLineArguments>
-					<StartWorkingDirectory>
+          <StartWorkingDirectory>
           </StartWorkingDirectory>
-					<EnableENC>False</EnableENC>
-					<AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
-				</WebProjectProperties>
-			</FlavorProperties>
-		</VisualStudio>
-	</ProjectExtensions>
-
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
