@@ -6,3 +6,4 @@ After downloading and opening the solution, be sure to install all required NPM 
 
 The project has been configured with Gulp [Task Runner] to automate the build process.  JSHint will be executed on all SuiteScript 2.0 files to check for any errors.  Your SuiteScript 2.0 files are then copied to "deploy/suitescript/debug" and "deploy/suitescript/release", where the "release" files are "Uglified".
 
+### NOTE:  The UI Module is out of date and is missing ServerWidget, Message, and Dialog.  NetSuite Support has been contacted and the UI module will be updated as soon as possible.
