@@ -1,4 +1,4 @@
-/// <binding AfterBuild='build' />
+/// <binding AfterBuild='build' ProjectOpened='jshint-watch' />
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     changed = require('gulp-changed');    
@@ -41,32 +41,51 @@ gulp.task('build', ['jshint'], function (done) {
 });
 
 gulp.task('jshint', [], function (done) {
-    var map = require('map-stream'),
-        chalk = require('chalk'),    
-        merge = require('merge2'),
+    var merge = require('merge2'),
         jsHint = require('gulp-jshint'),    
         jsHintConfig = require('./jshint.json'),
+        watch = require('gulp-watch');
 
-        buildJSHintConfig,
-        vsReporter;
+    return merge(
+        //
+        // Find problems in API
+        //
+
+        gulp.src(buildMap.N.source)            
+            .pipe(jsHint(overrideJSConfig(jsHintConfig, buildMap.N.jsHint))),            
+
+        //
+        // Find problems in custom SuiteScript
+        //
+
+        gulp.src(buildMap.SuiteScript.source)            
+            .pipe(jsHint(overrideJSConfig(jsHintConfig, buildMap.SuiteScript.jsHint)))
+            
+    )
+    .pipe(new VSReporter);
+});
+
+gulp.task('jshint-watch', [], function (done) {
+    var jsHint = require('gulp-jshint'),    
+        jsHintConfig = require('./jshint.json'),
+        watch = require('gulp-watch');
+
+        //
+        // Find problems in custom SuiteScript
+        //
+
+        return gulp.src(buildMap.SuiteScript.source)
+            .pipe(watch(buildMap.SuiteScript.source))
+            .pipe(jsHint(overrideJSConfig(jsHintConfig, buildMap.SuiteScript.jsHint)))
+            .pipe(new VSReporter);
+});
+
+function VSReporter() {
+    var map = require('map-stream'),
+        chalk = require('chalk'),
+        reporter;
     
-    buildJSHintConfig = function (defaultValues, overrideValues) {
-        var config,
-            value;
-        
-        // Clone defaultValues
-        config = JSON.parse(JSON.stringify(defaultValues));
-
-        Object.keys(overrideValues).forEach(function (key) {
-            value = overrideValues[key];
-
-            config[key] = value;
-        });
-
-        return config;
-    };
-    
-    vsReporter = map(function (file, cb) {
+    reporter = map(function (file, cb) {
         var code,        
             line;
         
@@ -103,23 +122,21 @@ gulp.task('jshint', [], function (done) {
         cb(null, file);
     });
 
-    return merge(
-        //
-        // Find problems in API
-        //
+    return reporter;
+}
 
-        gulp.src(buildMap.N.source)
-            .pipe(jsHint(buildJSHintConfig(jsHintConfig, buildMap.N.jsHint))),            
-
-        //
-        // Find problems in custom SuiteScript
-        //
-
-        gulp.src(buildMap.SuiteScript.source)
-            .pipe(jsHint(buildJSHintConfig(jsHintConfig, buildMap.SuiteScript.jsHint)))
-            
-    )
-    .pipe(vsReporter);
-});
-
-
+function overrideJSConfig(jsConfig, overrideValues) {
+    var config,
+        value;
+    
+    // Clone jsConfig
+    config = JSON.parse(JSON.stringify(jsConfig));
+    
+    Object.keys(overrideValues).forEach(function (key) {
+        value = overrideValues[key];
+        
+        config[key] = value;
+    });
+    
+    return config;
+};
