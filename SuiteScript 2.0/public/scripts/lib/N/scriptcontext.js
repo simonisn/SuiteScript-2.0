@@ -67,13 +67,13 @@ N.scriptContext = (function () {
     }
 
     function CS() {
-
+        
         /**
         * The current form record
         *
-        * @type {string}
+        * @type {N.record.objects.Record}
         */
-        this.currentRecord = undefined;
+        this.currentRecord = new N.record.objects.Record();        
 
         /**
         * Mode - 'create', 'edit', or 'view'.
