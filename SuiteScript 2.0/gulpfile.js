@@ -7,7 +7,7 @@ var buildMap = {
     N: {
         source: './public/scripts/lib/N/**/*.js',
         jsHint: {
-            unused: false // Don't let unused parameters in API functions cause warnings
+            unused: false // Don't let unused parameters in API functions cause warnings            
         }
     },
     SuiteScript: {
@@ -16,8 +16,12 @@ var buildMap = {
             debug: './deploy/SuiteScript/debug',
             release: './deploy/SuiteScript/release'
         },
-        jsHint: {
-
+        jsHint: {            
+            globals: {
+                log: true                
+            },
+            undef: true,
+            unused: false
         }
     }
 };

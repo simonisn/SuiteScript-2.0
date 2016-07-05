@@ -163,10 +163,107 @@ N.scriptContext = (function () {
         this.response = new HTTPResponse();
     }
 
+    function SS() {
+        /** 
+        * Invocation Type Enumeration
+        */
+        function InvocationTypes() {
+            return {
+                SCHEDULED: 'SCHEDULED',
+                ON_DEMAND: 'ON_DEMAND',
+                USER_INTERFACE: 'USER_INTERFACE',
+                ABORTED: 'ABORTED',
+                SKIPPED: 'SKIPPED'
+            };
+        }
+
+        this.InvocationType = new InvocationTypes();
+
+        /**
+         * Invocation Type
+         * @type {String}
+         */        
+        this.type = undefined;
+    }
+    
+    var MR = (function () {
+        function GetInputContext() {
+            this.isRestarted = undefined;
+        }
+
+        function MapContext() {
+            this.isRestarted = undefined;
+            this.key = undefined;
+            this.value = undefined;
+            this.write = function (key, value) {
+
+            };
+        }
+
+        function ReduceContext() {
+            this.key = undefined;
+            this.values = [];
+            this.write = function (key, value) {
+
+            };
+        }
+
+        function InputSummary() {
+            this.dateCreated = undefined;
+            this.seconds = undefined;
+            this.usage = undefined;
+            this.error = undefined;
+        }
+
+        function MapSummary() {
+            this.dateCreated = undefined;
+            this.seconds = undefined;
+            this.usage = undefined;
+            this.concurrency = undefined;
+            this.yields = undefined;
+            this.keys = undefined;
+            this.errors = undefined;
+        }
+
+        function ReduceSummary() {
+            this.dateCreated = undefined;
+            this.seconds = undefined;
+            this.usage = undefined;
+            this.concurrency = undefined;
+            this.yields = undefined;
+            this.keys = undefined;
+            this.errors = undefined;
+        }
+
+        function Summary() {
+            this.dateCreated = undefined;
+            this.seconds = undefined;
+            this.usage = undefined;
+            this.concurrency = undefined;
+            this.yields = undefined;
+            this.inputSummary = new InputSummary();
+            this.mapSummary = new MapSummary();
+            this.reduceSummary = new ReduceSummary();
+            this.output = undefined;
+            this.isRestarted = undefined;
+        }
+
+        return {
+            GetInputContext: GetInputContext,
+            MapContext: MapContext,
+            ReduceContext: ReduceContext,
+            Summary: Summary,
+            MapSummary: MapSummary,
+            ReduceSummary: ReduceSummary
+        };
+    })();
+
     return {
         UE: UE,
         CS: CS,
-        SL: SL
+        MR: MR,
+        SL: SL,
+        SS: SS
     };
 
 })();

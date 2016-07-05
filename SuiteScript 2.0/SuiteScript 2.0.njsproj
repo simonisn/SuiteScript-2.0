@@ -36,10 +36,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="deploy\SuiteScript\debug\_SAMPLE_CS.js" />
+    <Compile Include="deploy\SuiteScript\debug\_SAMPLE_MR.js" />
     <Compile Include="deploy\SuiteScript\debug\_SAMPLE_SL.js" />
+    <Compile Include="deploy\SuiteScript\debug\_SAMPLE_SS.js" />
     <Compile Include="deploy\SuiteScript\debug\_SAMPLE_UE.js" />
     <Compile Include="deploy\SuiteScript\release\_SAMPLE_CS.js" />
+    <Compile Include="deploy\SuiteScript\release\_SAMPLE_MR.js" />
     <Compile Include="deploy\SuiteScript\release\_SAMPLE_SL.js" />
+    <Compile Include="deploy\SuiteScript\release\_SAMPLE_SS.js" />
     <Compile Include="deploy\SuiteScript\release\_SAMPLE_UE.js" />
     <Compile Include="gulpfile.js" />
     <Content Include="public\scripts\lib\moduleViewer.js" />
@@ -76,6 +80,8 @@
     <Content Include="public\scripts\SuiteScript\_SAMPLE_UE.js" />
     <Content Include="public\scripts\SuiteScript\_SAMPLE_CS.js" />
     <Content Include="public\scripts\SuiteScript\_SAMPLE_SL.js" />
+    <Content Include="public\scripts\SuiteScript\_SAMPLE_SS.js" />
+    <Content Include="public\scripts\SuiteScript\_SAMPLE_MR.js" />
     <Compile Include="server.js" />
     <Content Include="jshint.json" />
     <Content Include="package.json" />
