@@ -30,7 +30,9 @@ requirejs.config({
         'N/sso': 'lib/N/modules/sso',
         'N/task': 'lib/N/modules/task',
         'N/transaction': 'lib/N/modules/transaction',
-        'N/ui': 'lib/N/modules/ui',
+        'N/ui/dialog': 'lib/N/modules/ui/dialog',
+        'N/ui/message': 'lib/N/modules/ui/message',
+        'N/ui/serverWidget': 'lib/N/modules/ui/serverWidget',
         'N/url': 'lib/N/modules/url',        
         'N/workflow': 'lib/N/modules/workflow',
         'N/xml': 'lib/N/modules/xml'
@@ -59,7 +61,9 @@ require(['moduleViewer', 'jquery', 'N'], function (moduleViewer, $, N) {
         'N/sso',
         'N/task',
         'N/transaction',
-        'N/ui',
+        'N/ui/dialog',
+        'N/ui/message',
+        'N/ui/serverWidget',
         'N/url',        
         'N/workflow',
         'N/xml'

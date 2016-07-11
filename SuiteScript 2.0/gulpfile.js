@@ -40,8 +40,9 @@ gulp.task('build', ['jshint'], function (done) {
     return gulp.src(buildMap.SuiteScript.source)        
         .pipe(changed(buildMap.SuiteScript.dest.debug, { hasChanged: changed.compareSha1Digest }))
         .pipe(gulp.dest(buildMap.SuiteScript.dest.debug))        
-        .pipe(uglify())        
-        .pipe(gulp.dest(buildMap.SuiteScript.dest.release));        
+        .pipe(uglify())
+        .pipe(changed(buildMap.SuiteScript.dest.release, { hasChanged: changed.compareSha1Digest }))
+        .pipe(gulp.dest(buildMap.SuiteScript.dest.release));
 });
 
 gulp.task('jshint', [], function (done) {

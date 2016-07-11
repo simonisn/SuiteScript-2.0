@@ -1,6 +1,6 @@
-﻿/// <reference path="../lib/N/modules/ui.js" />
-/// <reference path="../lib/N/modules/record.js" />
+﻿/// <reference path="../lib/N/modules/record.js" />
 /// <reference path="../lib/N/modules/search.js" />
+/// <reference path="../lib/N/modules/ui/serverWidget.js" />
 /// <reference path="../lib/N/scriptcontext.js" />
 
 
@@ -11,20 +11,20 @@
 
 'use strict';
 
-define(['N/record', 'N/search', 'N/ui'],
+define(['N/record', 'N/search', 'N/ui/serverWidget'],
     /**
     * Anonymous function executed when module loads
     *
     * @param {N.record.module} record
     * @param {N.search.module} search
-    * @param {N.ui.module} ui
+    * @param {N.ui.serverWidget.module} serverWidget
     */
-    function (record, search, ui) {
-
+    function (record, search, serverWidget) {
+        
         var beforeLoad,
             beforeSubmit,
-            afterSubmit;                
-
+            afterSubmit;        
+        
         /** 
         * Executed whenever a read operation occurs on a record, and prior to returning the record or page.
         * These operations include navigating to a record in the UI, reading a record in web services, and loading a record.
